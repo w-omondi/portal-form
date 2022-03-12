@@ -1,0 +1,179 @@
+{
+  "inputs": [
+    {
+      "label": "Email",
+      "type": "email",
+      "name": "email"
+    },
+    {
+      "label": "Full Name (surname, first name, other names)",
+      "type": "text",
+      "name": "fullname"
+    },
+    {
+      "label": "Salutations title (Mr. Mrs. Miss. Ms. e.t.c)",
+      "type": "text",
+      "name": "salutationtitle"
+    },
+    {
+      "label": "Position Applied For( as it appears in the advert).",
+      "type": "text",
+      "name": "positionApplied"
+    },
+    {
+      "label": "Vacancy no ( unique to each post)",
+      "type": "text",
+      "name": "vacancyNo"
+    },
+    {
+      "label": "National ID no. *",
+      "type": "text",
+      "name": "ID"
+    },
+    {
+      "label": "Date of Birth.",
+      "type": "date",
+      "name": "dob"
+    },
+    {
+      "label": "Home County.",
+      "type": "text",
+      "name": "homeCounty"
+    },
+    {
+      "label": "Sub-County .",
+      "type": "text",
+      "name": "subCounty"
+    },
+    {
+      "label": "Ward.",
+      "type": "text",
+      "name": "ward"
+    },
+    {
+      "label": "Location.",
+      "type": "text",
+      "name": "location"
+    },
+    {
+      "label": "Sub-Location.",
+      "type": "text",
+      "name": "subLocation"
+    },
+    {
+      "label": "Phone No",
+      "type": "tel",
+      "name": "phone"
+    },
+    {
+      "label": "Postal address.",
+      "type": "address",
+      "name": "postalAddress"
+    },
+    {
+      "label": "Postal Code",
+      "type": "text",
+      "name": "postalCode"
+    },
+    {
+      "label": "Email address",
+      "type": "email",
+      "name": "email"
+    },
+    {
+      "label": "Academic and professional credentials. (tick where applicable)",
+      "type": "checkbox",
+      "checks": [
+        "Doctorate.",
+        "Masters.",
+        "Bachelors.",
+        "Higher Diploma",
+        "Diploma",
+        "Certificate",
+        "KCSE certificate",
+        "KCPE Certificate"
+      ],
+      "name": "academicProfessionalCredentials"
+    },
+    {
+      "label": "Attach all your Academic certificates here(Combine all certificates in one PDF document) *",
+      "type": "file",
+      "name": "academicCertificates"
+    },
+    {
+      "label": "Academic Qualifications, Institution and year of attaining the certificate.( State all qualifications as checked above from highest to the lowest qualifications.)",
+      "type": "textArea",
+      "name": "academicQualifications"
+    },
+    {
+      "label": "Professionals Certifications(Name of the Qualification/certificate, Institution and year of attaining the certificate).",
+      "type": "textArea",
+      "name": "certification"
+    },
+    {
+      "label": "Professional membership in good standing (where applicable)State professional body and membership no.(b): Possession of a valid letter or certificate of confirmation of membership in good standing(c): Professional license ( where applicable)",
+      "type": "textArea",
+      "name": "professionalMembership"
+    },
+    {
+      "label": "Other relevant testimonials ( state the top 3 of other relevant testimonials, if any;",
+      "type": "textArea",
+      "name": "testimonials"
+    },
+    {
+      "label": "Cumulative years of experience *",
+      "type": "number",
+      "name": "experience"
+    },
+    {
+      "label": "Are you currently Employed? *",
+      "type": "checkbox",
+      "checks": ["Yes", "No"],
+      "name": "employed"
+    },
+    {
+      "label": "If Yes, Kindly Indicate Your Current Employer",
+      "type": "text",
+      "name": "currentEmployer"
+    },
+    {
+      "label": "Ethnicity.",
+      "type": "text",
+      "name": "ethnicity"
+    },
+    {
+      "label": "Are you from a minority group? ",
+      "type": "checkbox",
+      "checks": ["Yes", "No"],
+      "name": "minorityGroup"
+    },
+    {
+      "label": "Are you a PLWD?",
+      "type": "checkbox",
+      "checks": ["Yes", "No"],
+      "name": "PLWD"
+    },
+    {
+      "label": "If yes, please state the nature of disability and APDK Registration no",
+      "type": "text",
+      "name": "disabilityNatureAndAPDk"
+    },
+    {
+      "label": "Chapter 6 compliance. (Tick where applicable), NB: Not mandatory but those who will be shortlisted might be required to avail during the interviews",
+      "type": "checkbox",
+      "checks": [
+        "KRA tax compliance certificate",
+        "EACC clearance",
+        "CRB clearance",
+        "HELB clearance",
+        "CID clearance/Good conduct"
+      ],
+      "name": "compliance"
+    },
+    {
+      "label": "Referees. Indicate the Names, Phone number and Email address of two referees.",
+      "type": "text",
+      "name": "referees"
+    }
+  ]
+}
