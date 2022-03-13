@@ -6,7 +6,7 @@ export default function Header() {
     <div className="Header">
       <div></div>
       <img className='Logo' src={Logo} alt="avator" />
-      <span>Busia County</span>
+      <span>County Government of Busia</span>
       <span>BCPSB DATA CAPTURE FORM</span>
     </div>
   )

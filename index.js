@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const { db } = require('./dbconnection');
 const cors = require('cors');
-const { applicationSubmitHandler } = require('./application');
+const { applicationSubmitHandler, getAllApplications } = require('./application');
 const app = express();
 const port = process.env.PORT || 5000;
 
@@ -23,9 +23,7 @@ db.getConnection((err) => {
 app.post('/form-data', applicationSubmitHandler);
 
 //applications
-app.get('/applications', (req, res) => {
-    res.send("No response available");
-});
+app.get('/applications', getAllApplications);
 
 //Captures unmatched routes
 app.get('*', (req, res) => {

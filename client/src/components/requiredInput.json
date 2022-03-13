@@ -23,7 +23,7 @@
     {
       "label": "Vacancy no ( unique to each post)",
       "type": "text",
-      "name": "vacancyNo"
+      "name": "vacancy_no"
     },
     {
       "label": "National ID no. *",

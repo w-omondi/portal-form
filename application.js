@@ -97,5 +97,11 @@ ${experience},\
         res.end();
     })
 }
+const getAllApplications = (req, res) => {
+    let query = `SELECT * FROM applicants;`;
+    db.query(query, (err, result) => {
+        res.json(result);
+    })
+}
 
-module.exports = { applicationSubmitHandler }
+module.exports = { applicationSubmitHandler, getAllApplications }

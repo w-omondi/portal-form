@@ -46,13 +46,12 @@ export class App extends Component {
           ))}
           <div className="submit-wrapper">
             <button type='submit'>submit</button>
-            <button type='clear'>clear</button>
           </div>
         </form>
         <div className="submit-wrapper bottom">
-          <span>© 2022</span>
           <span>All Rights Reserved</span>
           <span>County Government of Busia</span>
+          <span>© 2022</span>
         </div>
       </div>
     )

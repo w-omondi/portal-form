@@ -3,11 +3,16 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import Admin from './components/Admin'
+import { Router } from '@reach/router'
+
 
 ReactDOM.render(
   <React.StrictMode>
-    {/* <MultipleChoices checks={["washie","toto","omondi"]}/> */}
-    <App />
+    <Router>
+      <App path="/" />
+      <Admin path="/admin" />
+    </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );

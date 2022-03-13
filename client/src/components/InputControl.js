@@ -1,5 +1,4 @@
 import React from "react";
-import "./InputControl.css";
 import MultipleChoices from "./MultipleChoices";
 
 export default function InputControl(props) {
