@@ -9,21 +9,32 @@
     display: flex;
     flex-direction: column;
     border: 1px solid rgba(128, 128, 128, 0.315);
+    align-items: center;
 }
-.Header{
+
+.Header {
     padding: unset;
 }
-.Header span{
-    font-weight:500;
+
+.Header span {
+    font-weight: 500;
     font-size: large;
-    margin: 20px auto;
+    margin: 10px auto;
+    width: unset;
 }
-.Header div{
+
+.Header div {
     background-color: #673ab7;
     width: 100%;
     height: 10px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+}
+
+.Logo {
+    max-width: 100px;
+    max-height: 100px;
+    padding: 20px;
 }
 
 input,
@@ -46,11 +57,23 @@ textarea {
     width: 90%;
     margin: 10px auto;
 }
-.submit-wrapper{
-    flex-direction:row-reverse;
+
+.submit-wrapper {
+    flex-direction: row-reverse;
     background-color: unset;
     justify-content: space-evenly;
     border: none;
+}
+
+.submit-wrapper.bottom {
+    flex-direction: column;
+    align-items: center;
+}
+
+.submit-wrapper.bottom span {
+    width: unset;
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.521);
 }
 
 button {
@@ -65,13 +88,16 @@ button {
     width: 200px;
     text-transform: capitalize;
 }
+
 button[type="clear"] {
-    background-color:white;
+    background-color: white;
     color: rgba(137, 43, 226, 0.747);
     border: 1px solid rgba(137, 43, 226, 0.671);
 }
-button:hover,button:active{
-    filter:contrast();
+
+button:hover,
+button:active {
+    filter: contrast();
 }
 
 .checkbox-wrapper {

@@ -1,5 +1,6 @@
 import React from "react";
 import "./InputControl.css";
+import MultipleChoices from "./MultipleChoices";
 
 export default function InputControl(props) {
   let el = "";
@@ -15,18 +16,9 @@ export default function InputControl(props) {
       />
     );
   } else if (props.type === "checkbox") {
-    el = props.checks.map((item, i) => (
-      <div className="checkbox-wrapper" key={i}>
-        <input
-          type="checkbox"
-          name={props.name}
-          onChange={props.onChange}
-          placeholder="Your answer"
-          value={item}
-        />
-        <label>{item}</label>
-      </div>
-    ));
+    el = (
+      <MultipleChoices element={props.name} checks={props.checks} setValue={props.setValue} />
+    );
   } else {
     el = (
       <input

@@ -3,6 +3,8 @@ import './App.css'
 import Header from './components/Header'
 import InputControl from './components/InputControl'
 import AllInputs from './components/requiredInput.json'
+import axios from 'axios'
+
 
 export class App extends Component {
   constructor(props) {
@@ -16,13 +18,20 @@ export class App extends Component {
   onChangeHandler(e) {
     this.setState({ [e.target.name]: e.target.value })
   }
-  logData = () => {
-    console.log(this.state);
+  setValue = (element, value) => {
+    this.setState({ [element]: value })
+  }
+  onSubmit = (e) => {
+    e.preventDefault();
+    axios.post('/form-data', this.state)
+      .then(res => { console.log(res.data) })
+      .catch(err => { console.log(err.message) })
+
   }
   render() {
     return (
       <div className="App">
-        <form>
+        <form onSubmit={this.onSubmit}>
           <Header />
           {AllInputs.inputs.map((field, index) => (
             <InputControl
@@ -32,6 +41,7 @@ export class App extends Component {
               label={field.label}
               checks={field.checks}
               onChange={this.onChangeHandler}
+              setValue={this.setValue}
             />
           ))}
           <div className="submit-wrapper">
@@ -39,6 +49,11 @@ export class App extends Component {
             <button type='clear'>clear</button>
           </div>
         </form>
+        <div className="submit-wrapper bottom">
+          <span>© 2022</span>
+          <span>All Rights Reserved</span>
+          <span>County Government of Busia</span>
+        </div>
       </div>
     )
   }

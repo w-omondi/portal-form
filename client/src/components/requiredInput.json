@@ -13,12 +13,12 @@
     {
       "label": "Salutations title (Mr. Mrs. Miss. Ms. e.t.c)",
       "type": "text",
-      "name": "salutationtitle"
+      "name": "salutation_title"
     },
     {
       "label": "Position Applied For( as it appears in the advert).",
       "type": "text",
-      "name": "positionApplied"
+      "name": "position_applied"
     },
     {
       "label": "Vacancy no ( unique to each post)",
@@ -28,22 +28,22 @@
     {
       "label": "National ID no. *",
       "type": "text",
-      "name": "ID"
+      "name": "national_id"
     },
     {
       "label": "Date of Birth.",
       "type": "date",
-      "name": "dob"
+      "name": "date_of_birth"
     },
     {
       "label": "Home County.",
       "type": "text",
-      "name": "homeCounty"
+      "name": "home_county"
     },
     {
       "label": "Sub-County .",
       "type": "text",
-      "name": "subCounty"
+      "name": "sub_county"
     },
     {
       "label": "Ward.",
@@ -58,7 +58,7 @@
     {
       "label": "Sub-Location.",
       "type": "text",
-      "name": "subLocation"
+      "name": "sub_location"
     },
     {
       "label": "Phone No",
@@ -68,12 +68,12 @@
     {
       "label": "Postal address.",
       "type": "address",
-      "name": "postalAddress"
+      "name": "postal_address"
     },
     {
       "label": "Postal Code",
       "type": "text",
-      "name": "postalCode"
+      "name": "postal_code"
     },
     {
       "label": "Email address",
@@ -93,17 +93,17 @@
         "KCSE certificate",
         "KCPE Certificate"
       ],
-      "name": "academicProfessionalCredentials"
+      "name": "academic_professional_credentials"
     },
     {
       "label": "Attach all your Academic certificates here(Combine all certificates in one PDF document) *",
       "type": "file",
-      "name": "academicCertificates"
+      "name": "academic_certificates"
     },
     {
       "label": "Academic Qualifications, Institution and year of attaining the certificate.( State all qualifications as checked above from highest to the lowest qualifications.)",
       "type": "textArea",
-      "name": "academicQualifications"
+      "name": "academic_qualifications"
     },
     {
       "label": "Professionals Certifications(Name of the Qualification/certificate, Institution and year of attaining the certificate).",
@@ -113,7 +113,7 @@
     {
       "label": "Professional membership in good standing (where applicable)State professional body and membership no.(b): Possession of a valid letter or certificate of confirmation of membership in good standing(c): Professional license ( where applicable)",
       "type": "textArea",
-      "name": "professionalMembership"
+      "name": "professional_membership"
     },
     {
       "label": "Other relevant testimonials ( state the top 3 of other relevant testimonials, if any;",
@@ -134,7 +134,7 @@
     {
       "label": "If Yes, Kindly Indicate Your Current Employer",
       "type": "text",
-      "name": "currentEmployer"
+      "name": "current_employer"
     },
     {
       "label": "Ethnicity.",
@@ -145,18 +145,18 @@
       "label": "Are you from a minority group? ",
       "type": "checkbox",
       "checks": ["Yes", "No"],
-      "name": "minorityGroup"
+      "name": "minority_group"
     },
     {
       "label": "Are you a PLWD?",
       "type": "checkbox",
       "checks": ["Yes", "No"],
-      "name": "PLWD"
+      "name": "plwd"
     },
     {
       "label": "If yes, please state the nature of disability and APDK Registration no",
       "type": "text",
-      "name": "disabilityNatureAndAPDk"
+      "name": "disability_nature_APDk"
     },
     {
       "label": "Chapter 6 compliance. (Tick where applicable), NB: Not mandatory but those who will be shortlisted might be required to avail during the interviews",
@@ -168,11 +168,11 @@
         "HELB clearance",
         "CID clearance/Good conduct"
       ],
-      "name": "compliance"
+      "name": "chapter6_compliance"
     },
     {
       "label": "Referees. Indicate the Names, Phone number and Email address of two referees.",
-      "type": "text",
+      "type": "textArea",
       "name": "referees"
     }
   ]
