@@ -8,29 +8,58 @@ export class Admin extends Component {
 
     this.state = {
       applications: [],
+      filterDate: '',
+      limit: 5
     };
   }
   componentDidMount() {
+    this.Applications();
+  }
+  changeHandler = (e) => {
+    this.setState({ [e.target.name]: e.target.value }, () => {
+      this.getApplications(this.state.filterDate, this.state.limit);
+    })
+  }
+  getApplications = (date, limit) => {
+    (!limit || !date ?
+      this.Applications()
+      :
+      axios
+        .get(`/filter-applications/${date}/${limit}`)
+        .then((response) => {
+          console.log(response.data);
+          this.setState({ applications: response.data })
+        })
+        .catch((err) => {
+          console.log(err.message);
+        })
+    )
+  }
+
+  Applications = () => {
     axios
-      .get("/applications")
+      .get(`/applications`)
       .then((response) => {
-        response.length !== 0
-          ? this.setState({ applications: response.data })
-          : alert("Applications not found");
+        console.log(response.data);
+        this.setState({ applications: response.data })
       })
       .catch((err) => {
-        alert(err.message);
+        console.log(err.message);
       });
+  }
+  clearFilter = () => {
+    this.setState({ filterDate: "", limit: 5 }, () => this.Applications())
   }
   render() {
     const columns = [
+      "timestamp",
       "email",
       "fullname",
       "salutation_title",
       "position_applied",
       "vacancy_no",
       "national_id",
-      "date_of_birth",
+      // "date_of_birth",
       "phone",
       "academic_professional_credentials",
       // "home_county",
@@ -61,15 +90,16 @@ export class Admin extends Component {
           <div className="control-wrapper" style={{ width: "70%" }}>
             <div className="tabcontrol">
               <label htmlFor="limit">Limit</label>
-              <input id="limit" type="number" min={5} placeholder="limit" />
+              <input id="limit" type="number" onChange={this.changeHandler} min={5} name="limit" value={this.state.limit} placeholder="limit" />
             </div>
             <div className="tabcontrol">
               <label htmlFor="date">From</label>
-              <input id="date" type="date" />
+              <input id="date" type="date" onChange={this.changeHandler} name="filterDate" value={this.state.filterDate} />
             </div>
+            <button onClick={this.clearFilter} style={{ textDecoration: "underline" }} className="check-applications">Check applications</button>
           </div>
           <div className="control-wrapper" style={{ width: "30%" }}>
-            <CSVLink style={{color:"white"}} data={this.state.applications} filename={Date.now()+ "APPLICANTS LIST"}>Download full .xls file</CSVLink>
+            <CSVLink style={{ color: "white" }} data={this.state.applications} filename={"BCPSB DATA CAPTURE FORM " + Date.now()}>Download full .csv file</CSVLink>
           </div>
 
         </div>
@@ -77,19 +107,20 @@ export class Admin extends Component {
           <table>
             <thead>
               {columns.map((column, index) => (
-                <th>{column.replace(/_/g, " ")}</th>
+                <th key={index}>{column.replace(/_/g, " ")}</th>
               ))}
             </thead>
             <tbody>
               {this.state.applications.map((colvalue, index) => (
                 <tr key={index}>
+                  <td>{new Date(colvalue.timestamp).toLocaleDateString()} {new Date(colvalue.timestamp).toLocaleTimeString()}</td>
                   <td>{colvalue.email}</td>
                   <td>{colvalue.fullname}</td>
                   <td>{colvalue.salutation_title}</td>
                   <td>{colvalue.position_applied}</td>
                   <td>{colvalue.vacancy_no}</td>
                   <td>{colvalue.national_id}</td>
-                  <td>{colvalue.date_of_birth.split("T")[0]}</td>
+                  {/* <td>{colvalue.date_of_birth.split("T")[0]}</td> */}
                   <td>{colvalue.phone}</td>
                   <td>{colvalue.academic_professional_credentials}</td>
                   {/* <td>{colvalue.home_county}</td>

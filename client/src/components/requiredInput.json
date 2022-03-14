@@ -1,64 +1,76 @@
 {
   "inputs": [
     {
-      "label": "Email",
+      "label": "Email address",
       "type": "email",
-      "name": "email"
+      "name": "email",
+      "required": "true"
     },
     {
       "label": "Full Name (surname, first name, other names)",
       "type": "text",
-      "name": "fullname"
+      "name": "fullname",
+      "required": "true"
     },
     {
       "label": "Salutations title (Mr. Mrs. Miss. Ms. e.t.c)",
       "type": "text",
-      "name": "salutation_title"
+      "name": "salutation_title",
+      "required": "true"
     },
     {
       "label": "Position Applied For( as it appears in the advert).",
       "type": "text",
-      "name": "position_applied"
+      "name": "position_applied",
+      "required": "true"
     },
     {
       "label": "Vacancy no ( unique to each post)",
       "type": "text",
-      "name": "vacancy_no"
+      "name": "vacancy_no",
+      "required": "true"
     },
     {
       "label": "National ID no. *",
       "type": "text",
-      "name": "national_id"
+      "name": "national_id",
+      "required": "true"
     },
     {
       "label": "Date of Birth.",
       "type": "date",
-      "name": "date_of_birth"
+      "name": "date_of_birth",
+      "required": "true"
     },
     {
       "label": "Home County.",
       "type": "text",
-      "name": "home_county"
+      "name": "home_county",
+      "required": "true"
     },
     {
       "label": "Sub-County .",
       "type": "text",
-      "name": "sub_county"
+      "name": "sub_county",
+      "required": "true"
     },
     {
       "label": "Ward.",
       "type": "text",
-      "name": "ward"
+      "name": "ward",
+      "required": "true"
     },
     {
       "label": "Location.",
       "type": "text",
-      "name": "location"
+      "name": "location",
+      "required": "true"
     },
     {
       "label": "Sub-Location.",
       "type": "text",
-      "name": "sub_location"
+      "name": "sub_location",
+      "required": "true"
     },
     {
       "label": "Phone No",
@@ -68,17 +80,14 @@
     {
       "label": "Postal address.",
       "type": "address",
-      "name": "postal_address"
+      "name": "postal_address",
+      "required": "true"
     },
     {
       "label": "Postal Code",
       "type": "text",
-      "name": "postal_code"
-    },
-    {
-      "label": "Email address",
-      "type": "email",
-      "name": "email"
+      "name": "postal_code",
+      "required": "true"
     },
     {
       "label": "Academic and professional credentials. (tick where applicable)",
@@ -93,27 +102,32 @@
         "KCSE certificate",
         "KCPE Certificate"
       ],
-      "name": "academic_professional_credentials"
+      "name": "academic_professional_credentials",
+      "required": "false"
     },
     {
       "label": "Attach all your Academic certificates here(Combine all certificates in one PDF document) *",
       "type": "file",
-      "name": "academic_certificates"
+      "name": "academic_certificates",
+      "required": "true"
     },
     {
       "label": "Academic Qualifications, Institution and year of attaining the certificate.( State all qualifications as checked above from highest to the lowest qualifications.)",
       "type": "textArea",
-      "name": "academic_qualifications"
+      "name": "academic_qualifications",
+      "required": "true"
     },
     {
       "label": "Professionals Certifications(Name of the Qualification/certificate, Institution and year of attaining the certificate).",
       "type": "textArea",
-      "name": "certification"
+      "name": "certification",
+      "required": "true"
     },
     {
       "label": "Professional membership in good standing (where applicable)State professional body and membership no.(b): Possession of a valid letter or certificate of confirmation of membership in good standing(c): Professional license ( where applicable)",
       "type": "textArea",
-      "name": "professional_membership"
+      "name": "professional_membership",
+      "required": "true"
     },
     {
       "label": "Other relevant testimonials ( state the top 3 of other relevant testimonials, if any;",
@@ -123,40 +137,47 @@
     {
       "label": "Cumulative years of experience *",
       "type": "number",
-      "name": "experience"
+      "name": "experience",
+      "required": "true"
     },
     {
-      "label": "Are you currently Employed? *",
+      "label": "Are you currently Employed?",
       "type": "checkbox",
       "checks": ["Yes", "No"],
-      "name": "employed"
+      "name": "employed",
+      "required": "true"
     },
     {
       "label": "If Yes, Kindly Indicate Your Current Employer",
       "type": "text",
-      "name": "current_employer"
+      "name": "current_employer",
+      "required": "true"
     },
     {
       "label": "Ethnicity.",
       "type": "text",
-      "name": "ethnicity"
+      "name": "ethnicity",
+      "required": "true"
     },
     {
-      "label": "Are you from a minority group? ",
+      "label": "Are you from a minority group?",
       "type": "checkbox",
       "checks": ["Yes", "No"],
-      "name": "minority_group"
+      "name": "minority_group",
+      "required": "true"
     },
     {
       "label": "Are you a PLWD?",
       "type": "checkbox",
       "checks": ["Yes", "No"],
-      "name": "plwd"
+      "name": "plwd",
+      "required": "true"
     },
     {
       "label": "If yes, please state the nature of disability and APDK Registration no",
-      "type": "text",
-      "name": "disability_nature_APDk"
+      "type": "textArea",
+      "name": "disability_nature_APDK",
+      "required": "false"
     },
     {
       "label": "Chapter 6 compliance. (Tick where applicable), NB: Not mandatory but those who will be shortlisted might be required to avail during the interviews",
@@ -168,12 +189,14 @@
         "HELB clearance",
         "CID clearance/Good conduct"
       ],
-      "name": "chapter6_compliance"
+      "name": "chapter6_compliance",
+      "required": "true"
     },
     {
       "label": "Referees. Indicate the Names, Phone number and Email address of two referees.",
       "type": "textArea",
-      "name": "referees"
+      "name": "referees",
+      "required": "true"
     }
   ]
 }

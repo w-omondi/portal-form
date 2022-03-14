@@ -1,3 +1,10 @@
+.App {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
 .input-wrapper,
 .submit-wrapper,
 .Header {
@@ -103,6 +110,8 @@ button[type="clear"] {
 button:hover,
 button:active {
     filter: contrast();
+    cursor: pointer;
+    color: #39d353;
 }
 
 .checkbox-wrapper {
@@ -117,6 +126,16 @@ button:active {
 .input-wrapper .checkbox-wrapper input {
     margin: 0px 5px 0px 0px;
     width: unset;
+}
+
+.input-wrapper.done span {
+    text-align: center;
+    font-size: large;
+}
+
+.input-wrapper.done i {
+    font-size: 40px;
+    color: green;
 }
 
 .admin {
@@ -135,14 +154,20 @@ button:active {
     background-color: #ffffff;
     padding: 20px;
     display: flex;
+    flex-direction: wrap;
     flex-direction: row;
     border: 1px solid rgba(128, 128, 128, 0.315);
     align-items: center;
     color: rgba(0, 0, 0, 0.685);
     font-weight: bold
 }
-.admin-header>span{
+
+.admin-header>span {
     font-size: x-large;
+}
+
+.admin-header div {
+    width: 30%;
 }
 
 table {
@@ -156,7 +181,7 @@ thead {
 
 td,
 th {
-    padding: 3px;
+    padding: 2px;
     text-align: center;
     border: 1px solid grey;
 }
@@ -184,7 +209,7 @@ th {
     font-weight: bold;
 }
 
-.control-wrapper{
+.control-wrapper {
     display: flex;
     flex-direction: row;
 }
@@ -195,9 +220,19 @@ th {
     .Header,
     .submit-wrapper.bottom {
         width: 90%;
+        padding: 10px;
     }
 
     .admin {
+        width: 100%;
+    }
+
+    .admin-header {
+        flex-direction: column;
+    }
+
+    .admin-header div,
+    .admin-header span {
         width: 100%;
     }
 }

@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Admin from './components/Admin'
 import { Router } from '@reach/router'
+import FileUploader from './components/FileUploader';
 
 
 ReactDOM.render(
