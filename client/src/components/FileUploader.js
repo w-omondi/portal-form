@@ -38,14 +38,10 @@ export class FileUploader extends Component {
 
     return (
       this.state.success ?
-        <div className="input-wrapper">
-          <span>File(s) uploaded</span>
-        </div>
+        <span style={{ color: "#32a86d", fontWeight: "bold" }}>Files uploaded <i className='fas fa-check-circle' /></span>
         :
         (this.state.loading && !this.state.success ?
-          <div className="input-wrapper">
-            <span><i class="fas fa-spinner fa-pulse"></i> Uploading</span>
-          </div>
+          <span><i class="fas fa-spinner fa-pulse"></i> Uploading</span>
           :
           <>
             <input type="file" name="upload" id="upload" multiple onChange={this.onChangeHandler} />

@@ -22,7 +22,8 @@ db.getConnection((err) => {
 
 //routes
 app.post('/form-data', applicationSubmitHandler);
-app.post('/upload', fileUpload);
+// app.post('/upload', fileUpload);
+app.post('/upload', (req, res) => res.status(200).end("success"));
 //applications
 app.get('/applications', getAllApplications);
 app.get('/filter-applications/:date/:limit', getCustomApplications);
