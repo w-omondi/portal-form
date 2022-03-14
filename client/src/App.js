@@ -59,7 +59,7 @@ export class App extends Component {
         }
         <div className="submit-wrapper bottom">
           <span>All Rights Reserved</span>
-          <span>County Government of Busia</span>
+          <span>County Government of Baringo</span>
           <span>© 2022</span>
         </div>
       </div>
