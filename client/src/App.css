@@ -66,7 +66,7 @@ span,
 input,
 span,
 textarea {
-    width: 90%;
+    width: 100%;
     margin: 10px auto;
 }
 
@@ -115,7 +115,7 @@ button:active {
 }
 
 .checkbox-wrapper {
-    width: 90%;
+    width: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -220,7 +220,6 @@ th {
     .Header,
     .submit-wrapper.bottom {
         width: 90%;
-        padding: 10px;
     }
 
     .admin {
