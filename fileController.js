@@ -33,9 +33,11 @@ const filesToZip = (req, res) => {
 }
 
 const zipDownload = (req, res) => {
-    let zipPath = __dirname + '/public/uploads/' + req.body.zipPath;
+    let zip = req.params.zipPath.trim();
+    let zipPath = __dirname + `/public/uploads/${zip}`;
+    console.log(zipPath);
     res.download(zipPath, (err) => {
-        console.log(err);
+        if (err) throw err;
     })
 }
 

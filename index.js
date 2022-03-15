@@ -20,12 +20,14 @@ db.getConnection((err) => {
     console.log("db connected");
 });
 
-//routes
+//saving applications
 app.post('/form-data', applicationSubmitHandler);
+
 //handles file uploads and downloads
 app.post('/upload', upload, filesToZip);
-app.post(`/download-zip`, zipDownload);
-//applications
+app.get(`/download-zip/:zipPath`, zipDownload);
+
+//fetching applications
 app.get('/applications', getAllApplications);
 app.get('/filter-applications/:date/:limit', getCustomApplications);
 

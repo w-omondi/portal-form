@@ -49,16 +49,6 @@ export class Admin extends Component {
     this.setState({ filterDate: "", limit: 5 }, () => this.Applications());
   };
 
-  downloadZip = (zipPath) => {
-    axios
-      .post(`/download-zip`, { zipPath: zipPath })
-      .then((response) => {
-        console.log(response.data);
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
-  };
   render() {
     const columns = [
       "timestamp",
@@ -160,7 +150,7 @@ export class Admin extends Component {
                   {/* <td>{colvalue.date_of_birth.split("T")[0]}</td> */}
                   <td>{colvalue.phone}</td>
                   <td>
-                    <button
+                    {/* <button
                       onClick={() =>
                         this.downloadZip(colvalue.academic_certificates)
                       }
@@ -171,10 +161,15 @@ export class Admin extends Component {
                         textDecoration: "underline",
                         color: "blue"
                       }}
-                      disabled
                     >
                       download
-                    </button>
+                    </button> */}
+                    <a
+                      href={`/download-zip/${colvalue.academic_certificates}`}
+                      download
+                    >
+                      Download
+                    </a>
                   </td>
                   <td>{colvalue.academic_professional_credentials}</td>
                   {/* <td>{colvalue.home_county}</td>
