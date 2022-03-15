@@ -1,47 +1,44 @@
 const multer = require('multer');
-const fs = require('fs');
 const path = require('path');
-const uniquePrefix = Date.now() + Math.round(Math.random() * 1E9)
+const admzip = require('adm-zip');
+const fs = require('fs')
 
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, __dirname + "/public/uploads");
+    },
+    filename: function (req, file, cb) {
+        cb(
+            null,
+            file.fieldname + "-" + Date.now() + path.extname(file.originalname)
+        );
+    },
+});
 
+const upload = multer({ storage: storage }).array('file');
 
-const fileUpload = (req, res) => {
-    let createdFolder = '';
-    const setCreatedFolder = name => createdFolder = name;
+const filesToZip = (req, res) => {
+    var zip = new admzip();
+    var zipName = Date.now() + "-" + req.body.applicant + ".zip";
+    var outputFilePath = __dirname + '/public/uploads/' + zipName;
+    if (req.files) {
+        req.files.forEach((file) => {
+            console.log(file.path)
+            zip.addLocalFile(file.path)
+        });
+        fs.writeFileSync(outputFilePath, zip.toBuffer());
+        console.log(outputFilePath);
+        res.json({ zipPath: zipName });
+    }
+}
 
-    const storage = multer.diskStorage({
-        destination: function (req, file, cb) {
-            console.log(uniquePrefix);
-            const folderName = `./uploads/${uniquePrefix + '-' + req.body.applicant.toLocaleUpperCase()}`
-            try {
-                if (!fs.existsSync(folderName)) {
-                    fs.mkdirSync(folderName)
-                }
-            } catch (error) {
-                throw error;
-            }
-            cb(null, folderName);
-            setCreatedFolder(folderName);
-        },
-        filename: function (req, file, cb) {
-            cb(null, file.originalname.toLocaleUpperCase());
-        }
-    })
-
-    const upload = multer({ storage: storage }).array('file');
-
-    upload(req, res, function (err) {
-        console.log(req.body.applicant);
-        if (err instanceof multer.MulterError) {
-            // A Multer error occurred when uploading.
-            return res.status(500).json(err);
-        } else if (err) {
-            // An unknown error occurred when uploading.
-            return res.status(500).json(err);
-        }
-        // Everything went fine.
-        return res.status(200).send(createdFolder);
+const zipDownload = (req, res) => {
+    let zipPath = __dirname + '/public/uploads/' + req.body.zipPath;
+    res.download(zipPath, (err) => {
+        console.log(err);
     })
 }
 
-module.exports = { fileUpload }
+module.exports = {
+    upload, filesToZip, zipDownload
+}

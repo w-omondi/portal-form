@@ -5,7 +5,7 @@ const path = require('path');
 const { db } = require('./dbconnection');
 const cors = require('cors');
 const { applicationSubmitHandler, getAllApplications, getCustomApplications } = require('./application');
-const { fileUpload } = require('./fileController');
+const { upload, zipDownload, filesToZip } = require('./fileController');
 const app = express();
 const port = process.env.PORT || 5000;
 
@@ -22,8 +22,9 @@ db.getConnection((err) => {
 
 //routes
 app.post('/form-data', applicationSubmitHandler);
-// app.post('/upload', fileUpload);
-app.post('/upload', (req, res) => res.status(200).end("success"));
+//handles file uploads and downloads
+app.post('/upload', upload, filesToZip);
+app.post(`/download-zip`, zipDownload);
 //applications
 app.get('/applications', getAllApplications);
 app.get('/filter-applications/:date/:limit', getCustomApplications);

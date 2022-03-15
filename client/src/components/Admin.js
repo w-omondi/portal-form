@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { CSVLink } from 'react-csv';
+import { CSVLink } from "react-csv";
 import axios from "axios";
 import AdminHeader from "./AdminHeader";
 export class Admin extends Component {
@@ -8,8 +8,8 @@ export class Admin extends Component {
 
     this.state = {
       applications: [],
-      filterDate: '',
-      limit: 5
+      filterDate: "",
+      limit: 5,
     };
   }
   componentDidMount() {
@@ -18,38 +18,47 @@ export class Admin extends Component {
   changeHandler = (e) => {
     this.setState({ [e.target.name]: e.target.value }, () => {
       this.getApplications(this.state.filterDate, this.state.limit);
-    })
-  }
+    });
+  };
   getApplications = (date, limit) => {
-    (!limit || !date ?
-      this.Applications()
-      :
-      axios
+    !limit || !date
+      ? this.Applications()
+      : axios
         .get(`/filter-applications/${date}/${limit}`)
         .then((response) => {
           console.log(response.data);
-          this.setState({ applications: response.data })
+          this.setState({ applications: response.data });
         })
         .catch((err) => {
           console.log(err.message);
-        })
-    )
-  }
+        });
+  };
 
   Applications = () => {
     axios
       .get(`/applications`)
       .then((response) => {
         console.log(response.data);
-        this.setState({ applications: response.data })
+        this.setState({ applications: response.data });
       })
       .catch((err) => {
         console.log(err.message);
       });
-  }
+  };
   clearFilter = () => {
-    this.setState({ filterDate: "", limit: 5 }, () => this.Applications())
-  }
+    this.setState({ filterDate: "", limit: 5 }, () => this.Applications());
+  };
+
+  downloadZip = (zipPath) => {
+    axios
+      .post(`/download-zip`, { zipPath: zipPath })
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  };
   render() {
     const columns = [
       "timestamp",
@@ -61,6 +70,7 @@ export class Admin extends Component {
       "national_id",
       // "date_of_birth",
       "phone",
+      "academic_certificates",
       "academic_professional_credentials",
       // "home_county",
       // "sub_county",
@@ -69,7 +79,6 @@ export class Admin extends Component {
       // "sub_location",
       // "postal_address",
       // "postal_code",
-      // "academic_certificates",
       // "academic_qualifications",
       // "certification",
       // "professional_membership",
@@ -90,18 +99,43 @@ export class Admin extends Component {
           <div className="control-wrapper" style={{ width: "70%" }}>
             <div className="tabcontrol">
               <label htmlFor="limit">Limit</label>
-              <input id="limit" type="number" onChange={this.changeHandler} min={5} name="limit" value={this.state.limit} placeholder="limit" />
+              <input
+                id="limit"
+                type="number"
+                onChange={this.changeHandler}
+                min={5}
+                name="limit"
+                value={this.state.limit}
+                placeholder="limit"
+              />
             </div>
             <div className="tabcontrol">
               <label htmlFor="date">From</label>
-              <input id="date" type="date" onChange={this.changeHandler} name="filterDate" value={this.state.filterDate} />
+              <input
+                id="date"
+                type="date"
+                onChange={this.changeHandler}
+                name="filterDate"
+                value={this.state.filterDate}
+              />
             </div>
-            <button onClick={this.clearFilter} style={{ textDecoration: "underline" }} className="check-applications">Check applications</button>
+            <button
+              onClick={this.clearFilter}
+              style={{ textDecoration: "underline" }}
+              className="check-applications"
+            >
+              Check applications
+            </button>
           </div>
           <div className="control-wrapper" style={{ width: "30%" }}>
-            <CSVLink style={{ color: "white" }} data={this.state.applications} filename={"BCPSB DATA CAPTURE FORM " + Date.now()}>Download full .csv file</CSVLink>
+            <CSVLink
+              style={{ color: "white" }}
+              data={this.state.applications}
+              filename={"BCPSB DATA CAPTURE FORM " + Date.now()}
+            >
+              Download full .csv file
+            </CSVLink>
           </div>
-
         </div>
         <div className="table-wrapper">
           <table>
@@ -113,7 +147,10 @@ export class Admin extends Component {
             <tbody>
               {this.state.applications.map((colvalue, index) => (
                 <tr key={index}>
-                  <td>{new Date(colvalue.timestamp).toLocaleDateString()} {new Date(colvalue.timestamp).toLocaleTimeString()}</td>
+                  <td>
+                    {new Date(colvalue.timestamp).toLocaleDateString()}{" "}
+                    {new Date(colvalue.timestamp).toLocaleTimeString()}
+                  </td>
                   <td>{colvalue.email}</td>
                   <td>{colvalue.fullname}</td>
                   <td>{colvalue.salutation_title}</td>
@@ -122,6 +159,23 @@ export class Admin extends Component {
                   <td>{colvalue.national_id}</td>
                   {/* <td>{colvalue.date_of_birth.split("T")[0]}</td> */}
                   <td>{colvalue.phone}</td>
+                  <td>
+                    <button
+                      onClick={() =>
+                        this.downloadZip(colvalue.academic_certificates)
+                      }
+                      style={{
+                        padding: "3px",
+                        backgroundColor: "transparent",
+                        width: "unset",
+                        textDecoration: "underline",
+                        color: "blue"
+                      }}
+                      disabled
+                    >
+                      download
+                    </button>
+                  </td>
                   <td>{colvalue.academic_professional_credentials}</td>
                   {/* <td>{colvalue.home_county}</td>
                 <td>{colvalue.sub_county}</td>
@@ -130,7 +184,6 @@ export class Admin extends Component {
                 <td>{colvalue.sub_location}</td>
                 <td>{colvalue.postal_address}</td>
                 <td>{colvalue.postal_code}</td>
-                <td>{colvalue.academic_certificates}</td>
                 <td>{colvalue.academic_qualifications}</td>
                 <td>{colvalue.certification}</td>
                 <td>{colvalue.professional_membership}</td>

@@ -7,7 +7,7 @@ export class FileUploader extends Component {
 
     this.state = {
       files: '',
-      applicant: this.props.name,
+      applicant: this.props.element,
       success: false,
       loading: false
     }
@@ -27,7 +27,7 @@ export class FileUploader extends Component {
     axios.post('/upload', formData)
       .then(response => {
         this.setState({ success: true, loading: false })
-        this.props.setValue(this.state.applicant, response.data);
+        this.props.setValue(this.state.applicant, response.data.zipPath);
         console.log(response)
       }
       )
